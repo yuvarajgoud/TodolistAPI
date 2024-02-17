@@ -17,13 +17,13 @@ app.get('/',(req,res)=>{
 
 main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect(`mongodb+srv://yuvarajgoud:${process.env.DB_PASSWORD}@cluster0.max3jj3.mongodb.net/ecommerce`);
-  console.log('Database Connected')
-  console.log(process.env.DB_PASSWORD)
+  await mongoose.connect(`mongodb+srv://yuvarajgoud:${process.env.DB_PASSWORD}@cluster0.max3jj3.mongodb.net/ecommerce`)
+  .then( (res) => console.log('Database Connected'))
+  .catch ( err => console.log(err.message))
 }
 
 
 
-app.listen(process.env.PORT_NUMBER)
+app.listen(process.env.PORT_NUMBER || 80)
 
 
